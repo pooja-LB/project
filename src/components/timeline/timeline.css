@@ -1,0 +1,64 @@
+.timelines {
+  display: flex;
+}
+.timelines .status {
+  list-style: none;
+  margin-left: 4em;
+  margin-top: 0.5em;
+  margin-bottom: 2.3em;
+  border-left: 1px dashed black !important;
+  width: 100%;
+  padding: 1.7em 2.5em;
+}
+
+.timelines .status:before,
+.timelines .status:after {
+  position: absolute;
+  left: 7.2em;
+  background-color: #d9e3ea;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  content: "";
+}
+.timelines .status:before {
+  top: 15em;
+  background-image: url(/assets/destination.svg);
+}
+.timelines .status:after {
+  background-image: url(/assets/warehouse.svg);
+}
+
+.status .timeline-list {
+  position: relative;
+  color: #848484;
+  margin: 1.2em 0.3em 1.2em 0.3em;
+  padding: 0.6em;
+  border-radius: 0.4em;
+  font-size: 0.8em;
+  text-align: left;
+  border: 1px solid #d9e3ea;
+}
+
+.status .timeline-list:before {
+  position: absolute;
+  left: -3.9em;
+  top: 1.1em;
+  background-color: #6ecbf0;
+  border-radius: 100%;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  content: "";
+  box-shadow: 0px 1px 7px #74d9f7;
+}
+
+.status .timeline-list:after {
+  position: absolute;
+  left: -3.9em;
+  top: 1.4em;
+  display: inline-block;
+  width: 11%;
+  border: 1px solid #6ecbf0;
+  content: "";
+}
