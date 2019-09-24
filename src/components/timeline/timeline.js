@@ -2,34 +2,56 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from 'classnames';
+import { ConsumerContext } from './../../contextApi/context'
 import './timeline.css'
 
 class Timeline extends Component {
     constructor(props) {
         super(props);
     }
+    renderTimeline = () => {
+        const self = this;
+        const { state } = self.props;
+        let { ContextValue, scanArray } = state.state;
+        console.log(scanArray, "ContextValue")
+
+        return (
+            scanArray.map((data, index) => {
+                //console.log(data, "scanarray")
+                return (
+                    <li key={index} className="timeline-list" >
+                        <span>
+                            {data.status_detail}
+                        </span>
+                        <span>
+                            {data.time}
+                        </span>
+                    </li >
+                )
+            })
+        )
+    }
     render() {
         let self = this;
-        const { className, children } = self.props;
+        const { className, state } = self.props;
+        const { scanArray } = state.state;
         const classes = classNames(className, "dash");
-
+        console.log(scanArray, "fgfggf")
         return (
             <div className={classes}>
                 <div className="timelines">
-                    <ul className="status">
-                        <li className="timeline-list">DELIVERED</li>
-                        <li className="timeline-list">OUT FOR DELIVERY</li>
-                        <li className="timeline-list">UN-DELIVERED</li>
-                        <li className="timeline-list">ARRIVED AT DESTINATION</li>
-                    </ul>
+                    {scanArray == "" ?
+                        (<div></div>) :
+                        (<ul className="status">
+                            {this.renderTimeline()}
+                        </ul>)
+                    }
                 </div>
 
-            </div>
+            </div >
         );
     }
 }
 
-Timeline.propTypes = {
-};
 
-export default Timeline;
+export default ConsumerContext(Timeline);

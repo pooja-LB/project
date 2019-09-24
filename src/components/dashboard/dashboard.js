@@ -1,38 +1,44 @@
 
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classNames from 'classnames';
 import './dashboard.css'
+import { ConsumerContext } from './../../contextApi/context'
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
     }
+    renderlength = (type) => {
+        let self = this;
+        const { state } = self.props;
+        let ContextValue = state.state;
+        console.log("ContextValue", ContextValue)
+        let length = ContextValue.value.filter(item => {
+            return item.current_status_code == type
+        }).length
+        console.log("length", length)
+        return length;
+    }
+
     render() {
         let self = this;
-        const { className, children } = self.props;
-        const classes = classNames(className, "dash");
+        const { state } = self.props;
+        const status = ["DEL", "INT", "OOD", "DEX", "NFI"];
+        let ContextValue = state.state
+        console.log(state, "props")
 
         return (
-            <div className={classes}>
-                <div className="dash-card">
-                    <p>DEL</p>
-                    <h4>254</h4>
-                </div>
-                <div className="dash-card">
-                    <p>DEL</p>
-                    <h4>254</h4>
-                </div>
-                <div className="dash-card">
-                    <p>DEL</p>
-                    <h4>254</h4>
-                </div>
-            </div>
-        );
+            status.map((statusvalue) => {
+                return (
+                    <div className="dash-card" onClick={e=>{
+                        state.updateSelectedStatus(statusvalue)
+                    }} >
+                        <p>{statusvalue}</p>
+                        <h4>{this.renderlength(statusvalue)}</h4>
+                    </div>
+                )
+            })
+        )
     }
 }
 
-Dashboard.propTypes = {
-};
-
-export default Dashboard;
+export default ConsumerContext(Dashboard);

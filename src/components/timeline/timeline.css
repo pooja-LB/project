@@ -22,11 +22,11 @@
   content: "";
 }
 .timelines .status:before {
-  top: 15em;
-  background-image: url(/assets/destination.svg);
+  top: 13em;
+  background-image: url(../../assets/destination.svg);
 }
 .timelines .status:after {
-  background-image: url(/assets/warehouse.svg);
+  background-image: url(../../assets/warehouse.svg);
 }
 
 .status .timeline-list {
