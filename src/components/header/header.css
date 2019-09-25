@@ -4,7 +4,9 @@
     padding: 0.5em;
   }
   .heading{
-    padding: 1em 3em !important;
+    font-weight: 600;
+    color: black;
+    padding: 0.8em 3em !important;
     box-shadow: 0 0 8px 0px #a59f9f;
     background: white;
   }

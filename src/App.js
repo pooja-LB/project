@@ -13,10 +13,10 @@ class App extends React.Component {
     this.state = {
       value: [],
       changeValue: (newval) => this.changeFilter(newval),
-      selectedStatus :'',
+      selectedStatus: '',
       scanArray: []
     };
-    
+
   }
   componentDidMount() {
     getData().then(data => {
@@ -34,11 +34,11 @@ class App extends React.Component {
     let data = getData();
   }
 
-  updateSelectedStatus =(status)=>{
-    console.log("idddd" ,status)
+  updateSelectedStatus = (status) => {
+    console.log("idddd", status)
     this.setState({
-      ...this.state ,
-      selectedStatus : status
+      ...this.state,
+      selectedStatus: status
     })
   }
 
@@ -63,10 +63,10 @@ class App extends React.Component {
   render() {
     return (
       <MyProvider value={{
-        state : this.state,
+        state: this.state,
         updateSelectedStatus: this.updateSelectedStatus,
         renderScanData: this.renderScanData
-        }}>
+      }}>
         {this.props.children}
         <div className="header">
           <div className="text-center bg-light">
@@ -98,10 +98,10 @@ export function ConsumerContext(Component) {
   return function WrapperComponent(props) {
     return (
       <MyConsumer>
-        {state => <Component {...props} 
-        state={state}
+        {state => <Component {...props}
+          state={state}
         // ContextValue={state.state} updateselectedStatus={state.updateselectedStatus}
-         />}
+        />}
       </MyConsumer>
     );
   };

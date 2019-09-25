@@ -23,15 +23,16 @@ class Dashboard extends Component {
         let self = this;
         const { state } = self.props;
         const status = ["DEL", "INT", "OOD", "DEX", "NFI"];
-        let ContextValue = state.state
-        console.log(state, "props")
+        let { ContextValue, selectedStatus } = state.state
+        console.log(selectedStatus, "selectedStatus")
 
         return (
             status.map((statusvalue) => {
                 return (
-                    <div className="dash-card" onClick={e=>{
-                        state.updateSelectedStatus(statusvalue)
-                    }} >
+                    <div className={"dash-card " + ((statusvalue === selectedStatus) ? "active-status" : "")}
+                        onClick={e => {
+                            state.updateSelectedStatus(statusvalue)
+                        }} >
                         <p>{statusvalue}</p>
                         <h4>{this.renderlength(statusvalue)}</h4>
                     </div>

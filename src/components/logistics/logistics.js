@@ -12,26 +12,26 @@ class Logistics extends Component {
         const self = this;
         const { state } = self.props;
         let ContextValue = state.state;
-        let stat = (!!state.state.selectedStatus) ? state.state.selectedStatus :"DEL";
-        
-      //  let selectedStatus=state
+        let stat = (!!state.state.selectedStatus) ? state.state.selectedStatus : "DEL";
+
+        //  let selectedStatus=state
         console.log(state, "data")
         return ContextValue.value.map((data, index) => {
             console.log(data.carrier, "data")
             if (data.current_status_code == stat)
-            return (
-                <tr onClick={e => {
-                    state.renderScanData(data)
-                }}>
-                    <td>{data.awbno}</td>
-                    <td>{data.carrier.toUpperCase()}</td>
-                    <td>{data.from}</td>
-                    <td>{data.to}</td>
-                    <td>Dtas</td>
-                    <td> {data.pickup_date}</td>
-                    <td>{data.expected_delivery_date}</td>
-                    <td className={data.current_status_code == "DEL" ? "green" : ""} >{data.current_status}</td>
-                </tr>)
+                return (
+                    <tr onClick={e => {
+                        state.renderScanData(data)
+                    }}>
+                        <td>#{data.awbno}</td>
+                        <td>{data.carrier.toUpperCase()}</td>
+                        <td>{data.from}</td>
+                        <td>{data.to}</td>
+                        <td>USPA</td>
+                        <td> {data.pickup_date}</td>
+                        <td>{data.expected_delivery_date}</td>
+                        <td className={data.current_status_code == "DEL" ? "greened" : ""} >{data.current_status}</td>
+                    </tr>)
         })
     }
 

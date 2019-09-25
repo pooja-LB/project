@@ -19,13 +19,14 @@ class Timeline extends Component {
             scanArray.map((data, index) => {
                 //console.log(data, "scanarray")
                 return (
-                    <li key={index} className="timeline-list" >
-                        <span>
-                            {data.status_detail}
-                        </span>
-                        <span>
+                    <li key={index} className={"timeline-list " + ((data.status_detail) == 'DELIVERED' ? " active-blue" : "")} >
+                        {console.log(data.status_detail, "dddddd")}
+                        <div className={"col-md-8 clearfix " + ((data.status_detail) == 'DELIVERED' ? "greened" : "")}>
+                            {data.status_detail.toLowerCase()}
+                        </div>
+                        <div className={"col-md-4 clearfix " + ((data.status_detail) == 'DELIVERED' ? "greened" : "")}>
                             {data.time}
-                        </span>
+                        </div>
                     </li >
                 )
             })
